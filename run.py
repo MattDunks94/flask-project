@@ -21,9 +21,17 @@ def about():
     return render_template("about.html")
 
 
+# This connects to our contact.html page.
+# The route is "/contact" because in our url at the end of it is "/contact."
+
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+
+# This connects to our careers.html page.
+# The route is "/careers" because in our url at the end of it is "/careers."
 
 
 @app.route("/careers")
