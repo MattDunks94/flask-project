@@ -18,7 +18,7 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", page_title="About")
 
 
 # This connects to our contact.html page.
@@ -27,7 +27,7 @@ def about():
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", page_title="Contact")
 
 
 # This connects to our careers.html page.
@@ -36,7 +36,7 @@ def contact():
 
 @app.route("/careers")
 def careers():
-    return render_template("/careers.html")
+    return render_template("careers.html", page_title="Careers")
 
 
 if __name__ == "__main__":
