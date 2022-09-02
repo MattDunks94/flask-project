@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- links to our template bootstrap stylesheet (CSS) -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/clean-blog.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/clean-blog.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     <title>Hello Flask</title>
 </head>
 
@@ -42,7 +43,8 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('https://i.pinimg.com/originals/58/01/b1/5801b1b869309df5d19611004be61a0e.png');">
+    <header class="masthead"
+        style="background-image: url('https://i.pinimg.com/originals/58/01/b1/5801b1b869309df5d19611004be61a0e.png');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -58,7 +60,7 @@
 
     <!-- Main Content -->
     <div class="container">
-       
+
         <!-- This code is where the other templates, index, about.html etc, inject their content -->
         {% block content %}
         {% endblock %}
