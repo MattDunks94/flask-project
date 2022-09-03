@@ -33,8 +33,10 @@ def about():
 @app.route("/about/<member_name>")
 def about_member(member_name):
     member = {}
+    # Gaining access to our company.json file.
     with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
+        # Iterating through list of members objects in company.json.
         for obj in data:
             if obj["url"] == member_name:
                 member = obj
