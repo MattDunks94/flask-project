@@ -3,41 +3,70 @@
 {% block content %}
     <!-- This creates 3 <p> elements with the content from list_of_numbers argument list from the '/about' route, run.py -->
     <!-- {% for number in list_of_numbers %}
-             <p>{{ number }}</p>
-         {% endfor %} -->
+                <p>{{ number }}</p>
+            {% endfor %} -->
 
-<!-- Refer to run.py, this is a variable that contains our h2 content -->
-<h2>{{ page_title }}</h2>
-<p>
-    The formation of the group grew out of a meeting Gandalf had with Thorin in Bree which kindled Thorin's interest in
-    recapturing his long lost family inheritance. (Thorin's grandfather had been the King under the Mountain when Smaug
-    came and took it.) Remembering that he had once known an adventurous Hobbit on his travels in the Shire, Gandalf
-    decided to add Bilbo to their company because he knew that stealth and cunning were preferable to force. Gandalf
-    also believed that someone like Bilbo could keep the sometimes prideful and stubborn Dwarves from rash action. The
-    superstitious Dwarves also considered thirteen to be an unlucky number, and as Gandalf had planned to leave on other
-    business, welcomed a fourteenth to fill into their party.
-</p>
+    <!-- Refer to run.py, this is a variable that contains our h2 content -->
+    <h2>{{ page_title }}</h2>
+    <p>
+        The formation of the group grew out of a meeting Gandalf had with Thorin in Bree which kindled Thorin's interest in
+        recapturing his long lost family inheritance. (Thorin's grandfather had been the King under the Mountain when Smaug
+        came and took it.) Remembering that he had once known an adventurous Hobbit on his travels in the Shire, Gandalf
+        decided to add Bilbo to their company because he knew that stealth and cunning were preferable to force. Gandalf
+        also believed that someone like Bilbo could keep the sometimes prideful and stubborn Dwarves from rash action. The
+        superstitious Dwarves also considered thirteen to be an unlucky number, and as Gandalf had planned to leave on other
+        business, welcomed a fourteenth to fill into their party.
+    </p>
 
-<!-- This statement loops through our list of objects from company.json file and injects the content into html elements. -->
-{% for member in company %}
+    <!-- This statement loops through our list of objects from company.json file and injects the content into html elements. -->
+    {% for member in company %}
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <!-- Injecting the "name" from our member objects -->
-            <h3>{{ member.name }}</h3>
-            <p>
-                 <!-- Injecting the "description" from our member objects -->
-                {{ member.description }}
-            </p>
+        <div class="row featurette">
+
+        <!-- An if statement checking if loop.index is divisible by 2, allows odd index numbers -->
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <!-- Injecting the "name" from our member objects -->
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>
+                        <!-- Injecting the "description" from our member objects -->
+                        {{ member.description }}
+                    </p>
+                </div>
+                <div class="col-md-5">
+                    <!-- Injecting the "image_source" from our member objects -->
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+
+        <!-- Else statement, part of the if statement, allows even index numbers -->    
+            {% else %}
+
+                <div class="col-md-5">
+                    <!-- Injecting the "image_source" from our member objects -->
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <!-- Injecting the "name" from our member objects -->
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>
+                        <!-- Injecting the "description" from our member objects -->
+                        {{ member.description }}
+                    </p>
+                </div>
+
+            {% endif %}
         </div>
-        <div class="col-md-5">
-             <!-- Injecting the "image_source" from our member objects -->
-            <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
-        </div>
-    </div>
 
-    <hr class="featurette-divider">
-<!-- End of for loop -->
-{% endfor %}
+        <!-- An if statement that loops through all index's until the last index, allows the following code to be injected -->
+        <!-- Doesn't work for some reason? -->
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+
+    <!-- End of for loop -->
+    {% endfor %}
 
 {% endblock %}
