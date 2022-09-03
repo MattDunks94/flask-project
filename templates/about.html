@@ -27,8 +27,9 @@
             {% if loop.index % 2 != 0 %}
 
                 <div class="col-md-7">
-                    <!-- Injecting the "name" from our member objects -->
-                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <!-- Injecting the "name" and "url" from our member objects -->
+                    <!-- Also adds index number before member name -->
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
                     <p>
                         <!-- Injecting the "description" from our member objects -->
                         {{ member.description }}
@@ -47,8 +48,9 @@
                     <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
                 </div>
                 <div class="col-md-7">
-                    <!-- Injecting the "name" from our member objects -->
-                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <!-- Injecting the "name" and "url" from our member objects -->
+                    <!-- Also adds index number before member name -->
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
                     <p>
                         <!-- Injecting the "description" from our member objects -->
                         {{ member.description }}
