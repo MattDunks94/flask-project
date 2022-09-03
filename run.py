@@ -29,6 +29,7 @@ def about():
     return render_template("about.html", page_title="About", company=data)
 
 
+# This connects to the members individual url's.
 @app.route("/about/<member_name>")
 def about_member(member_name):
     member = {}
@@ -37,7 +38,7 @@ def about_member(member_name):
         for obj in data:
             if obj["url"] == member_name:
                 member = obj
-    return "<h1>" + member["name"] + "</h1>"
+    return render_template("member.html", member=member)
 
 
 # This connects to our contact.html page.
