@@ -1,6 +1,10 @@
 <!-- Routing code to base.html (our html template)-->
 {% extends "base.html" %}
 {% block content %}
+    <!-- This creates 3 <p> elements with the content from list_of_numbers argument list from the '/about' route, run.py -->
+    {% for number in list_of_numbers %}
+        <p>{{ number }}</p>
+    {% endfor %}
 <!-- Refer to run.py, this is a variable that contains our h2 content -->
 <h2>{{ page_title }}</h2>
 <p>
