@@ -19,7 +19,7 @@ def index():
 
 @app.route("/about")
 def about():
-    # This opens our company.json file as read-only ("r"), and assigns the data 
+    # This loads our company.json file as read-only ("r"), and assigns the data 
     # to the variable json_data.
     data = []
     with open("data/company.json", "r") as json_data:
