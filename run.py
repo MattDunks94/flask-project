@@ -18,7 +18,7 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html", page_title="About")
+    return render_template("about.html", page_title="About", list_of_numbers=[1,2,3])
 
 
 # This connects to our contact.html page.
