@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
@@ -47,8 +47,12 @@ def about_member(member_name):
 # The route is "/contact" because in our url at the end of it is "/contact."
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    # This if statement collects our form user data ("name", "email"). 
+    if request.method == "POST":
+        print(request.form.get("name"))
+        print(request.form["email"])
     return render_template("contact.html", page_title="Contact")
 
 
