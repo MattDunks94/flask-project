@@ -1,9 +1,12 @@
 import os
 import json
 from flask import Flask, render_template, request, flash
+if os.path.exists("env.py"):
+    import env
 
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("SECRET_KEY")
 
 # Using @app.route("/"), this opens our index.html page.
 # The route is a "/" because in our url there is nothing at the end of it.
@@ -49,10 +52,11 @@ def about_member(member_name):
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
-    # This if statement collects our form user data ("name", "email"). 
+    # This if statement displays message with user form data ("name"). 
     if request.method == "POST":
-        print(request.form.get("name"))
-        print(request.form["email"])
+        flash("Thanks {}, we have received your message!".format(
+            request.form.get("name")))
+
     return render_template("contact.html", page_title="Contact")
 
 
